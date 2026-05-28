@@ -29,7 +29,16 @@ if not os.path.exists(csv_filename):
         header.append('label') # Kolom terakhir untuk target/label
         writer.writerow(header)
 
+
 cap = cv2.VideoCapture(0)
+
+
+
+# Atur format videonya ke MJPEG biar sinkron sama DroidCam via USB
+cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
 status_rekam = "IDLE (Tidak Merekam)"
 label_aktif = -1
 
